@@ -556,3 +556,40 @@ a:focus-visible,
   padding-top: 1.5rem;
   border-top: 1px solid var(--bs-border-color);
 }
+
+
+/* ---------- 16. Страница всех отзывов ---------- */
+
+/* Полоски распределения оценок (компонент Bootstrap progress) */
+.rating-dist__label {
+  width: 2.5rem;
+}
+
+.rating-dist__count {
+  width: 1.5rem;
+  text-align: end;
+}
+
+.rating-dist__bar {
+  background-color: #f2c14e;
+}
+
+
+/* ---------- 17. Окно бронирования: услуги и стоимость ---------- */
+
+/* Подпись услуги: название слева, цена справа */
+.service-option {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  cursor: pointer;
+}
+
+.service-count {
+  max-width: 9rem;
+}
+
+.booking-summary {
+  background-color: var(--bs-tertiary-bg);
+}

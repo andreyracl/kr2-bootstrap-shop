@@ -12,7 +12,7 @@
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
     rel="stylesheet"
   >
-  <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="css/custom.css?v=4">
 </head>
 <body>
   <a class="visually-hidden-focusable position-absolute top-0 start-0 m-2 btn btn-primary" href="#main">Перейти к содержимому</a>
@@ -215,6 +215,7 @@
           <h2 class="h4 mb-1" id="reviews-title">Отзывы</h2>
           <p class="mb-0"><span class="rating-stars" role="img" aria-label="Оценка 5 из 5">★★★★★<span class="rating-stars__empty"></span></span> <span class="fw-semibold ms-1">4,7</span> <span class="text-body-secondary">по 3 отзывам</span></p>
         </div>
+        <a class="btn btn-sm btn-outline-light" href="reviews.html">Все отзывы о квестах</a>
       </div>
       <div class="row g-4">
           <div class="col-12 col-md-6 col-lg-4">
@@ -356,6 +357,7 @@
           <ul class="list-unstyled mb-0 d-grid gap-2">
             <li><a class="link-secondary" href="catalog.html">Квесты</a></li>
             <li><a class="link-secondary" href="order.html">Бронирование</a></li>
+            <li><a class="link-secondary" href="reviews.html">Отзывы</a></li>
             <li><a class="link-secondary" href="contacts.html">Контакты</a></li>
           </ul>
         </div>
@@ -373,98 +375,148 @@
   </footer>
 
   <div class="modal fade" id="booking-modal" tabindex="-1" aria-labelledby="booking-modal-title" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <form class="modal-content needs-validation" id="booking-form" novalidate>
         <div class="modal-header">
           <h2 class="modal-title h5" id="booking-modal-title">Быстрое бронирование</h2>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
         </div>
-        <form class="needs-validation" id="booking-form" novalidate>
-          <div class="modal-body">
-            <p class="small text-body-secondary">Поля, отмеченные <span class="text-danger">*</span>, обязательны. Администратор перезвонит в течение 15 минут и подтвердит бронь.</p>
-            <div class="row g-3">
-              <div class="col-12">
-                <label class="form-label" for="booking-quest">Квест <span class="text-danger">*</span></label>
-                <select class="form-select" id="booking-quest" name="quest" required>
-                  <option value="">Выберите квест</option>
-                <option value="Тайна старого чердака">Тайна старого чердака</option>
-                <option value="Кот Шрёдингера">Кот Шрёдингера</option>
-                <option value="Музей забытых вещей">Музей забытых вещей</option>
-                <option value="Лаборатория доктора Z">Лаборатория доктора Z</option>
-                <option value="Ограбление века">Ограбление века</option>
-                <option value="Подводная станция «Глубина»">Подводная станция «Глубина»</option>
-                <option value="Шифр Теслы">Шифр Теслы</option>
-                <option value="Палата №13" data-horror>Палата №13</option>
-                <option value="Проклятие Пиковой дамы">Проклятие Пиковой дамы</option>
-                <option value="Бункер-47">Бункер-47</option>
-                <option value="Последний сеанс" data-horror>Последний сеанс</option>
-                <option value="Протокол «Омега»">Протокол «Омега»</option>
-                <option value="Дом на болотах">Дом на болотах</option>
-                </select>
-                <div class="invalid-feedback">Выберите квест.</div>
-              </div>
-              <div class="col-6">
-                <label class="form-label" for="booking-day">День <span class="text-danger">*</span></label>
-                <select class="form-select" id="booking-day" name="day" required>
-                  <option value="Сегодня">Сегодня</option>
-                  <option value="Завтра">Завтра</option>
-                  <option value="Послезавтра">Послезавтра</option>
-                </select>
-              </div>
-              <div class="col-6">
-                <label class="form-label" for="booking-time">Время <span class="text-danger">*</span></label>
-                <input class="form-control" id="booking-time" name="time" type="time" min="10:00" max="22:30" required>
-                <div class="invalid-feedback">Укажите время с 10:00 до 22:30.</div>
-              </div>
-              <div class="col-12">
-                <label class="form-label" for="booking-players">Игроков <span class="text-danger">*</span></label>
-                <select class="form-select" id="booking-players" name="players" required>
-                  <option value="">Сколько вас будет</option>
-                  <option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option>
-                </select>
-                <div class="invalid-feedback">Укажите количество игроков.</div>
-              </div>
-              <div class="col-12 d-none" data-mode-for="booking-quest">
-                <label class="form-label" for="booking-mode">Режим игры <span class="text-danger">*</span></label>
-                <select class="form-select" id="booking-mode" name="mode" required disabled>
-                  <option value="soft">Лайт</option>
-                  <option value="light" selected>Медиум</option>
-                  <option value="hard">Хард</option>
-                </select>
-                <div class="form-text">Для хоррор-квестов с актёрами. Режим можно поменять на месте до начала игры.</div>
-              </div>
-              <div class="col-12">
-                <label class="form-label" for="booking-name">Имя <span class="text-danger">*</span></label>
-                <input class="form-control" id="booking-name" name="name" type="text" autocomplete="given-name" minlength="2" required>
-                <div class="invalid-feedback">Введите имя, минимум 2 буквы.</div>
-              </div>
-              <div class="col-12">
-                <label class="form-label" for="booking-phone">Телефон <span class="text-danger">*</span></label>
-                <div class="input-group has-validation">
-                  <span class="input-group-text">+7</span>
-                  <input class="form-control" id="booking-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="900 000-00-00" pattern="[0-9\s\-\(\)]{10,15}" required>
-                  <div class="invalid-feedback">Введите 10 цифр номера.</div>
+        <div class="modal-body">
+          <p class="small text-body-secondary">Поля, отмеченные <span class="text-danger">*</span>, обязательны. Администратор перезвонит в течение 15 минут и подтвердит бронь.</p>
+          <div class="row g-3">
+            <div class="col-12 col-md-6">
+              <label class="form-label" for="booking-quest">Квест <span class="text-danger">*</span></label>
+              <select class="form-select" id="booking-quest" name="quest" required>
+                <option value="">Выберите квест</option>
+                  <option value="Тайна старого чердака" data-min="2" data-max="5" data-price="3000" data-included="4" data-extra="500" data-escort>Тайна старого чердака</option>
+                  <option value="Кот Шрёдингера" data-min="2" data-max="4" data-price="3200" data-included="2" data-extra="500" data-escort>Кот Шрёдингера</option>
+                  <option value="Музей забытых вещей" data-min="3" data-max="6" data-price="3400" data-included="4" data-extra="500" data-escort>Музей забытых вещей</option>
+                  <option value="Лаборатория доктора Z" data-min="2" data-max="5" data-price="4200" data-included="4" data-extra="500" data-escort>Лаборатория доктора Z</option>
+                  <option value="Ограбление века" data-min="3" data-max="6" data-price="4500" data-included="4" data-extra="500">Ограбление века</option>
+                  <option value="Подводная станция «Глубина»" data-min="2" data-max="6" data-price="4400" data-included="4" data-extra="500" data-escort>Подводная станция «Глубина»</option>
+                  <option value="Шифр Теслы" data-min="2" data-max="4" data-price="4000" data-included="2" data-extra="500" data-escort>Шифр Теслы</option>
+                  <option value="Палата №13" data-min="2" data-max="5" data-price="5500" data-included="4" data-extra="1500" data-horror>Палата №13</option>
+                  <option value="Проклятие Пиковой дамы" data-min="3" data-max="6" data-price="5200" data-included="4" data-extra="1000">Проклятие Пиковой дамы</option>
+                  <option value="Бункер-47" data-min="4" data-max="8" data-price="6000" data-included="4" data-extra="1000">Бункер-47</option>
+                  <option value="Последний сеанс" data-min="2" data-max="6" data-price="5800" data-included="4" data-extra="1500" data-horror>Последний сеанс</option>
+                  <option value="Протокол «Омега»" data-min="2" data-max="5" data-price="5600" data-included="4" data-extra="1000">Протокол «Омега»</option>
+                  <option value="Дом на болотах" data-min="3" data-max="7" data-price="5400" data-included="4" data-extra="1000">Дом на болотах</option>
+              </select>
+              <div class="invalid-feedback">Выберите квест.</div>
+            </div>
+            <div class="col-6 col-md-3">
+              <label class="form-label" for="booking-day">День <span class="text-danger">*</span></label>
+              <select class="form-select" id="booking-day" name="day" required>
+                <option value="Сегодня">Сегодня</option>
+                <option value="Завтра">Завтра</option>
+                <option value="Послезавтра">Послезавтра</option>
+              </select>
+            </div>
+            <div class="col-6 col-md-3">
+              <label class="form-label" for="booking-time">Время <span class="text-danger">*</span></label>
+              <input class="form-control" id="booking-time" name="time" type="time" min="10:00" max="22:30" required>
+              <div class="invalid-feedback">С 10:00 до 22:30.</div>
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="form-label" for="booking-players">Игроков <span class="text-danger">*</span></label>
+              <select class="form-select" id="booking-players" name="players" required>
+                <option value="">Сколько вас будет</option>
+                <option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option>
+              </select>
+              <div class="invalid-feedback">Укажите количество игроков.</div>
+            </div>
+            <div class="col-12 col-md-6 d-none" data-mode-for="booking-quest">
+              <label class="form-label" for="booking-mode">Режим игры <span class="text-danger">*</span></label>
+              <select class="form-select" id="booking-mode" name="mode" required disabled>
+                <option value="soft">Лайт — без касаний</option>
+                <option value="light" selected>Медиум — касания руки и плеча</option>
+                <option value="hard">Хард — удержание</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <fieldset>
+                <legend class="form-label fs-6 mb-2">Дополнительные услуги</legend>
+                <div class="d-grid gap-2">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="service-video" name="services" value="video" data-price="3500">
+                    <label class="form-check-label service-option" for="service-video">
+                      <span>Видео прохождения: нарезка лучших моментов на 12–14 минут</span>
+                      <span class="text-nowrap fw-semibold">3 500 ₽</span>
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="service-watch" name="services" value="watch" data-price="500">
+                    <label class="form-check-label service-option" for="service-watch">
+                      <span>Наблюдение за игрой через камеры для гостей</span>
+                      <span class="text-nowrap fw-semibold">500 ₽/чел.</span>
+                    </label>
+                  </div>
+                  <div class="ms-4 d-none" id="service-watch-count-field">
+                    <label class="form-label small mb-1" for="service-watch-count">Сколько гостей будет смотреть</label>
+                    <div class="input-group input-group-sm service-count">
+                      <input class="form-control" type="number" id="service-watch-count" name="watchers" min="1" max="6" value="1">
+                      <span class="input-group-text">чел.</span>
+                    </div>
+                  </div>
+                  <div class="form-check d-none" data-escort-only>
+                    <input class="form-check-input" type="checkbox" id="service-escort" name="services" value="escort" data-price="1500" disabled>
+                    <label class="form-check-label service-option" for="service-escort">
+                      <span>Сопровождение администратором для команд с детьми</span>
+                      <span class="text-nowrap fw-semibold">1 500 ₽</span>
+                    </label>
+                  </div>
+                  <p class="small text-body-secondary mb-0">Фотографии команды — бесплатно, пришлём в течение суток после игры.</p>
                 </div>
-              </div>
-              <div class="col-12">
-                <label class="form-label" for="booking-comment">Комментарий</label>
-                <textarea class="form-control" id="booking-comment" name="comment" rows="2" placeholder="Необязательно: например, день рождения или вопрос администратору"></textarea>
-              </div>
-              <div class="col-12">
-                <div class="form-check">
-                  <input class="form-check-input" id="booking-agree" name="agree" type="checkbox" required>
-                  <label class="form-check-label" for="booking-agree">Согласен на обработку персональных данных <span class="text-danger">*</span></label>
-                  <div class="invalid-feedback">Без согласия мы не сможем принять бронь.</div>
+              </fieldset>
+            </div>
+            <div class="col-12">
+              <div class="booking-summary rounded-3 border p-3">
+                <h3 class="h6 mb-2">Стоимость</h3>
+                <ul class="list-unstyled small d-grid gap-1 mb-2" id="booking-lines">
+                  <li class="text-body-secondary">Выберите квест, время и количество игроков.</li>
+                </ul>
+                <div class="d-flex justify-content-between align-items-baseline border-top pt-2">
+                  <span class="fw-semibold">Итого</span>
+                  <span class="fs-5 fw-bold" id="booking-total" aria-live="polite">—</span>
                 </div>
+                <p class="small text-body-secondary mb-0 mt-1">Оплата на месте после игры.</p>
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="form-label" for="booking-name">Имя <span class="text-danger">*</span></label>
+              <input class="form-control" id="booking-name" name="name" type="text" autocomplete="given-name" minlength="2" required>
+              <div class="invalid-feedback">Введите имя, минимум 2 буквы.</div>
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="form-label" for="booking-phone">Телефон <span class="text-danger">*</span></label>
+              <div class="input-group has-validation">
+                <span class="input-group-text">+7</span>
+                <input class="form-control" id="booking-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="900 000-00-00" pattern="[0-9\s\-\(\)]{10,15}" required>
+                <div class="invalid-feedback">Введите 10 цифр номера.</div>
+              </div>
+            </div>
+            <div class="col-12">
+              <label class="form-label" for="booking-comment">Комментарий</label>
+              <textarea class="form-control" id="booking-comment" name="comment" rows="2" placeholder="Необязательно: например, день рождения или вопрос администратору"></textarea>
+            </div>
+            <div class="col-12">
+              <div class="form-check">
+                <input class="form-check-input" id="booking-agree" name="agree" type="checkbox" required>
+                <label class="form-check-label" for="booking-agree">Согласен на обработку персональных данных <span class="text-danger">*</span></label>
+                <div class="invalid-feedback">Без согласия мы не сможем принять бронь.</div>
               </div>
             </div>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Отмена</button>
-            <button type="submit" class="btn btn-primary">Отправить заявку</button>
+        </div>
+        <div class="modal-footer">
+          <div class="me-auto">
+            <span class="small text-body-secondary">Итого:</span>
+            <span class="fw-bold" id="booking-total-footer">—</span>
           </div>
-        </form>
-      </div>
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Отмена</button>
+          <button type="submit" class="btn btn-primary">Отправить заявку</button>
+        </div>
+      </form>
     </div>
   </div>
 
