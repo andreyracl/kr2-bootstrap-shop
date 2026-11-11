@@ -1,0 +1,408 @@
+/* ==========================================================
+   Квест-Лаборатория — собственные стили поверх Bootstrap 5.3
+   Подключается ПОСЛЕ bootstrap.min.css, поэтому может
+   переопределять его CSS-переменные и классы.
+   ========================================================== */
+
+
+/* ---------- 1. Палитра: тёмная тема Bootstrap + свой акцент ----------
+   Bootstrap 5.3 включает тёмную тему атрибутом data-bs-theme="dark" у <html>.
+   Здесь мы только подменяем значения его CSS-переменных. */
+
+:root,
+[data-bs-theme="dark"] {
+  /* Фон и текст: графитовый с холодным оттенком, а не чистый чёрный */
+  --bs-body-bg: #101317;
+  --bs-body-bg-rgb: 16, 19, 23;
+  --bs-body-color: #e4e7eb;
+  --bs-body-color-rgb: 228, 231, 235;
+  --bs-secondary-color: #8d96a3;
+  --bs-secondary-bg: #171b21;
+  --bs-tertiary-bg: #14171c;
+  --bs-border-color: #262c34;
+  --bs-emphasis-color: #ffffff;
+
+  /* Акцент — спокойный фиолетовый */
+  --bs-primary: #6c5ce7;
+  --bs-primary-rgb: 108, 92, 231;
+  --bs-primary-text-emphasis: #c3bbff;
+  --bs-primary-bg-subtle: #221d3d;
+  --bs-primary-border-subtle: #4a3fa0;
+  --bs-link-color: #a99cff;
+  --bs-link-color-rgb: 169, 156, 255;
+  --bs-link-hover-color: #cdc5ff;
+  --bs-link-hover-color-rgb: 205, 197, 255;
+
+  /* Цвета уровней сложности */
+  --ql-easy: #5fd39a;
+  --ql-medium: #f2c14e;
+  --ql-hard: #f2665c;
+
+  /* Шрифты */
+  --bs-body-font-family: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --bs-border-radius: .5rem;
+  --bs-border-radius-lg: .75rem;
+}
+
+/* Кнопки Bootstrap хранят цвета в своих переменных, поэтому задаём их отдельно */
+.btn-primary {
+  --bs-btn-color: #ffffff;
+  --bs-btn-bg: #6c5ce7;
+  --bs-btn-border-color: #6c5ce7;
+  --bs-btn-hover-color: #ffffff;
+  --bs-btn-hover-bg: #5a4bd4;
+  --bs-btn-hover-border-color: #5a4bd4;
+  --bs-btn-active-color: #ffffff;
+  --bs-btn-active-bg: #4f41c2;
+  --bs-btn-active-border-color: #4f41c2;
+  --bs-btn-disabled-bg: #6c5ce7;
+  --bs-btn-disabled-border-color: #6c5ce7;
+  --bs-btn-focus-shadow-rgb: 108, 92, 231;
+  background-image: none;
+  font-weight: 600;
+}
+
+.btn-outline-primary {
+  --bs-btn-color: #b3a8ff;
+  --bs-btn-border-color: #4a3fa0;
+  --bs-btn-hover-color: #ffffff;
+  --bs-btn-hover-bg: #6c5ce7;
+  --bs-btn-hover-border-color: #6c5ce7;
+  --bs-btn-active-color: #ffffff;
+  --bs-btn-active-bg: #6c5ce7;
+  --bs-btn-active-border-color: #6c5ce7;
+  --bs-btn-focus-shadow-rgb: 108, 92, 231;
+}
+
+.text-bg-primary {
+  color: #ffffff !important;
+  background-color: var(--bs-primary) !important;
+}
+
+.form-check-input:checked {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+}
+
+.form-control:focus,
+.form-select:focus,
+.form-check-input:focus {
+  border-color: #7f71ea;
+  box-shadow: 0 0 0 .25rem rgba(108, 92, 231, .3);
+}
+
+.nav-pills {
+  --bs-nav-pills-link-active-bg: var(--bs-primary);
+  --bs-nav-pills-link-active-color: #ffffff;
+}
+
+
+/* ---------- 2. Типографика ---------- */
+
+h1, h2, h3, .h1, .h2, .h3, .display-4 {
+  font-weight: 700;
+  letter-spacing: -.02em;
+}
+
+h4, h5, h6, .h4, .h5, .h6 {
+  font-weight: 600;
+}
+
+.lead {
+  max-width: 38rem;
+}
+
+
+/* ---------- 3. Шапка ---------- */
+
+.site-header {
+  z-index: 1030;
+}
+
+.site-navbar {
+  background-color: rgba(16, 19, 23, .85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--bs-border-color);
+}
+
+.site-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+/* Знак логотипа — простой кружок акцентного цвета */
+.site-brand__mark {
+  width: .9rem;
+  height: .9rem;
+  border-radius: 50%;
+  background-color: var(--bs-primary);
+}
+
+
+/* ---------- 4. Главный экран ---------- */
+
+/* Панель с мягкими цветными пятнами, как свет ламп в тёмной комнате.
+   Пятна — это несколько радиальных градиентов в одном background. */
+.hero-panel {
+  background-color: #171a21;
+  background-image:
+    radial-gradient(22rem 18rem at 0% 0%, rgba(86, 140, 190, .45), transparent 70%),
+    radial-gradient(26rem 16rem at 10% 100%, rgba(120, 90, 210, .45), transparent 70%),
+    radial-gradient(24rem 20rem at 80% 0%, rgba(214, 160, 100, .38), transparent 70%),
+    radial-gradient(24rem 22rem at 100% 90%, rgba(110, 170, 190, .32), transparent 70%);
+}
+
+.hero-panel .lead {
+  max-width: 40rem;
+}
+
+@media (max-width: 575.98px) {
+  .hero-panel .lead {
+    font-size: 1.05rem;
+  }
+}
+
+/* ---------- 4.1. Категории квестов ---------- */
+
+/* Горизонтальная лента карточек с прокруткой и «примагничиванием» к карточкам */
+.category-list {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+}
+
+.category-card {
+  flex: 0 0 auto;
+  width: 13.5rem;
+  overflow: hidden;
+  scroll-snap-align: start;
+  border-radius: var(--bs-border-radius-lg);
+}
+
+.category-card .card-img {
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  transition: transform .3s;
+}
+
+/* Затемнение снизу, чтобы название читалось на любой картинке */
+.category-card .card-img-overlay {
+  background: linear-gradient(to top, rgba(0, 0, 0, .75), transparent 55%);
+}
+
+.category-card:hover .card-img,
+.category-card:focus-visible .card-img {
+  transform: scale(1.04);
+}
+
+.category-card .card-title {
+  font-weight: 700;
+}
+
+/* ---------- 5. Индикатор сложности ---------- */
+
+.difficulty {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .875rem;
+  font-weight: 500;
+}
+
+.difficulty__pips {
+  display: inline-flex;
+  gap: 3px;
+}
+
+.difficulty__pip {
+  width: .5rem;
+  height: .5rem;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+  opacity: .45;
+}
+
+.difficulty__pip--on {
+  background-color: currentColor;
+  opacity: 1;
+}
+
+.difficulty--easy { color: var(--ql-easy); }
+.difficulty--medium { color: var(--ql-medium); }
+.difficulty--hard { color: var(--ql-hard); }
+
+/* ---------- 7. Карточка квеста ---------- */
+
+.quest-card {
+  position: relative;
+  background-color: var(--bs-secondary-bg);
+  overflow: hidden;
+}
+
+/* Вариант карточки: хит месяца выделен рамкой акцентного цвета */
+.quest-card--featured {
+  border-color: var(--bs-primary-border-subtle);
+}
+
+/* Картинка карточки — ссылка на страницу квеста.
+   tabindex="-1" и aria-hidden в HTML: с клавиатуры и для экранного диктора
+   остаётся одна ссылка — на названии, чтобы не было двух одинаковых. */
+.quest-card__media {
+  display: block;
+  overflow: hidden;
+  background-color: #12161b;
+}
+
+.quest-card__media img {
+  transition: transform .3s;
+}
+
+.quest-card__media:hover img {
+  transform: scale(1.04);
+}
+
+/* Бейдж «Хит» / «Новинка» поверх изображения */
+.quest-card__tag {
+  position: absolute;
+  top: .75rem;
+  left: .75rem;
+}
+
+/* Второй бейдж («С актёром») — в правом углу */
+.quest-card__tag--second {
+  left: auto;
+  right: .75rem;
+}
+
+.quest-card__link {
+  color: var(--bs-emphasis-color);
+  text-decoration: none;
+}
+
+.quest-card__link:hover {
+  color: var(--bs-link-hover-color);
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+
+/* Характеристики в три колонки */
+.quest-card__meta {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  justify-content: start;
+  gap: .25rem 1.25rem;
+  padding-top: .75rem;
+  border-top: 1px solid var(--bs-border-color);
+}
+
+.quest-card__meta span {
+  display: block;
+  font-size: .75rem;
+}
+
+.quest-card .card-footer {
+  background-color: transparent;
+}
+
+
+/* ---------- 8. Каталог: фильтры ---------- */
+
+@media (min-width: 992px) {
+  /* На больших экранах фильтр липнет под шапкой */
+  .filters {
+    position: sticky;
+    top: 5.5rem;
+  }
+}
+
+
+/* ---------- 9. Страница квеста ---------- */
+
+.quest-photos {
+  border-radius: var(--bs-border-radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--bs-border-color);
+}
+
+.specs-table th {
+  width: 40%;
+  font-weight: 500;
+  color: var(--bs-secondary-color);
+}
+
+.quest-story {
+  max-width: 44rem;
+  line-height: 1.7;
+}
+
+/* Сетка сеансов */
+.slot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr));
+  gap: .5rem;
+}
+
+.slot-btn {
+  padding-block: .5rem;
+}
+
+.slot-btn--busy {
+  color: var(--bs-secondary-color);
+  border: 1px dashed var(--bs-border-color);
+  text-decoration: line-through;
+}
+
+.slot-btn--busy .small {
+  text-decoration: none;
+  display: inline-block;
+}
+
+
+/* ---------- 10. Шаги «Как проходит игра» ---------- */
+
+.steps {
+  counter-reset: step;
+}
+
+/* Номер шага: это действительно последовательность, поэтому нумерация оправдана */
+.steps__item {
+  counter-increment: step;
+  padding-top: 1rem;
+  border-top: 1px solid var(--bs-border-color);
+}
+
+.steps__item::before {
+  content: counter(step);
+  display: block;
+  margin-bottom: .5rem;
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: var(--bs-primary);
+}
+
+
+/* ---------- 11. Подвал ---------- */
+
+.site-footer {
+  background-color: var(--bs-tertiary-bg);
+}
+
+
+/* ---------- 12. Доступность ---------- */
+
+a:focus-visible,
+.btn:focus-visible {
+  outline: 2px solid var(--bs-primary);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

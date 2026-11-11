@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ru" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Сеть квест-комнат «Квест-Лаборатория»: 13 квестов разной сложности, онлайн-расписание и бронирование.">
+  <title>Квест-Лаборатория — квест-комнаты в Москве</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body>
+  <a class="visually-hidden-focusable position-absolute top-0 start-0 m-2 btn btn-primary" href="#main">Перейти к содержимому</a>
+
+  <header class="sticky-top site-header">
+  <nav class="navbar navbar-expand-lg site-navbar" aria-label="Основная навигация">
+    <div class="container">
+      <a class="navbar-brand site-brand" href="index.html">
+        <span class="site-brand__mark" aria-hidden="true"></span>
+        Квест-Лаборатория
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Открыть меню">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="main-nav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-lg-2">
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Главная</a></li>
+          <li class="nav-item"><a class="nav-link" href="catalog.html">Квесты</a></li>
+          <li class="nav-item"><a class="nav-link" href="order.html">Бронирование</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
+        </ul>
+        <a class="btn btn-primary ms-lg-3" href="order.html">Забронировать</a>
+      </div>
+    </div>
+  </nav>
+  </header>
+
+  <main id="main">
+    <section class="container pt-4 pt-lg-5" aria-labelledby="hero-title">
+      <div class="hero-panel rounded-4 border p-4 p-md-5">
+        <div class="row">
+          <div class="col-12 col-lg-8 col-xl-7">
+            <p class="text-body-secondary fw-semibold mb-2">Сеть квест-комнат в Москве</p>
+            <h1 class="display-4 fw-bold mb-3" id="hero-title">Квесты в реальности</h1>
+            <p class="lead mb-4">Квест-комната — это игра, в которой команда из 2–8 человек за час или полтора разгадывает загадки, находит тайники и ищет выход. У нас 13 квестов в двух филиалах: от семейных головоломок до хоррора с живыми актёрами.</p>
+          </div>
+        </div>
+
+        <div class="d-flex flex-wrap gap-2">
+          <a class="btn btn-primary btn-lg" href="catalog.html">Смотреть все квесты</a>
+          <a class="btn btn-outline-light btn-lg" href="#faq-title">Частые вопросы</a>
+        </div>
+
+        <ul class="row row-cols-2 row-cols-md-4 g-3 list-unstyled mt-4 mb-0">
+          <li class="col"><span class="d-block fs-4 fw-bold">13</span><span class="small text-body-secondary">квестов</span></li>
+          <li class="col"><span class="d-block fs-4 fw-bold">2</span><span class="small text-body-secondary">филиала в центре</span></li>
+          <li class="col"><span class="d-block fs-4 fw-bold">60–90</span><span class="small text-body-secondary">минут игры</span></li>
+          <li class="col"><span class="d-block fs-4 fw-bold">6+</span><span class="small text-body-secondary">есть квесты для детей</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="container py-5" aria-labelledby="categories-title">
+      <div class="d-flex justify-content-between align-items-center gap-3 mb-4">
+        <h2 class="h2 fw-bold mb-0" id="categories-title">Квесты по категориям</h2>
+        <div class="d-none d-md-flex gap-2">
+          <button class="btn btn-outline-secondary category-scroll-btn" type="button" data-scroll="-1" aria-controls="category-list" aria-label="Прокрутить категории назад">&laquo;</button>
+          <button class="btn btn-outline-secondary category-scroll-btn" type="button" data-scroll="1" aria-controls="category-list" aria-label="Прокрутить категории вперёд">&raquo;</button>
+        </div>
+      </div>
+      <div class="category-list d-flex gap-3 pb-3" id="category-list">
+          <a class="card category-card border-0 text-white" href="catalog.html?scare=no">
+            <img src="images/categories/calm.svg" class="card-img" alt="" width="300" height="400" loading="lazy">
+            <div class="card-img-overlay d-flex flex-column justify-content-end">
+              <h3 class="h5 card-title mb-1">Нестрашные квесты</h3>
+              <p class="card-text small mb-0">9 квестов</p>
+            </div>
+          </a>
+          <a class="card category-card border-0 text-white" href="catalog.html?scare=yes">
+            <img src="images/categories/scary.svg" class="card-img" alt="" width="300" height="400" loading="lazy">
+            <div class="card-img-overlay d-flex flex-column justify-content-end">
+              <h3 class="h5 card-title mb-1">Страшные</h3>
+              <p class="card-text small mb-0">4 квеста</p>
+            </div>
+          </a>
+          <a class="card category-card border-0 text-white" href="catalog.html?age=12">
+            <img src="images/categories/kids.svg" class="card-img" alt="" width="300" height="400" loading="lazy">
+            <div class="card-img-overlay d-flex flex-column justify-content-end">
+              <h3 class="h5 card-title mb-1">Для детей</h3>
+              <p class="card-text small mb-0">6 квестов</p>
+            </div>
+          </a>
+          <a class="card category-card border-0 text-white" href="catalog.html?feature=actor">
+            <img src="images/categories/actors.svg" class="card-img" alt="" width="300" height="400" loading="lazy">
+            <div class="card-img-overlay d-flex flex-column justify-content-end">
+              <h3 class="h5 card-title mb-1">С актёрами</h3>
+              <p class="card-text small mb-0">2 квеста</p>
+            </div>
+          </a>
+          <a class="card category-card border-0 text-white" href="catalog.html?feature=new">
+            <img src="images/categories/new.svg" class="card-img" alt="" width="300" height="400" loading="lazy">
+            <div class="card-img-overlay d-flex flex-column justify-content-end">
+              <h3 class="h5 card-title mb-1">Новинки</h3>
+              <p class="card-text small mb-0">3 квеста</p>
+            </div>
+          </a>
+          <a class="card category-card border-0 text-white" href="catalog.html?difficulty=easy">
+            <img src="images/categories/beginners.svg" class="card-img" alt="" width="300" height="400" loading="lazy">
+            <div class="card-img-overlay d-flex flex-column justify-content-end">
+              <h3 class="h5 card-title mb-1">Для новичков</h3>
+              <p class="card-text small mb-0">3 квеста</p>
+            </div>
+          </a>
+          <a class="card category-card border-0 text-white" href="catalog.html?difficulty=hard">
+            <img src="images/categories/experts.svg" class="card-img" alt="" width="300" height="400" loading="lazy">
+            <div class="card-img-overlay d-flex flex-column justify-content-end">
+              <h3 class="h5 card-title mb-1">Для опытных</h3>
+              <p class="card-text small mb-0">6 квестов</p>
+            </div>
+          </a>
+          <a class="card category-card border-0 text-white" href="catalog.html?players=6">
+            <img src="images/categories/company.svg" class="card-img" alt="" width="300" height="400" loading="lazy">
+            <div class="card-img-overlay d-flex flex-column justify-content-end">
+              <h3 class="h5 card-title mb-1">Для компании от 6 человек</h3>
+              <p class="card-text small mb-0">7 квестов</p>
+            </div>
+          </a>
+      </div>
+    </section>
+
+    <section class="container py-5" aria-labelledby="popular-title">
+      <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
+        <div>
+          <h2 class="h3 mb-1" id="popular-title">Популярные квесты</h2>
+          <p class="text-body-secondary mb-0">По одному из каждого уровня — самые бронируемые в этом месяце.</p>
+        </div>
+        <a class="btn btn-outline-light" href="catalog.html">Все 13 квестов</a>
+      </div>
+      <div class="row g-4">
+          <div class="col-12 col-md-6 col-lg-4">
+            <article class="card h-100 quest-card">
+              <a class="ratio ratio-4x3 quest-card__media" href="quest-attic.html" tabindex="-1" aria-hidden="true">
+                <img src="images/quests/attic-1.jpg" class="card-img-top object-fit-cover" alt="" loading="lazy" width="800" height="600">
+              </a>
+              
+              <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <span class="difficulty difficulty--easy"><span class="difficulty__pips" aria-hidden="true"><span class="difficulty__pip difficulty__pip--on"></span><span class="difficulty__pip"></span><span class="difficulty__pip"></span></span>Лёгкий</span>
+                  <span class="badge rounded-pill border text-body-secondary" title="Минимальный возраст">6+</span>
+                </div>
+                <h3 class="h5 card-title"><a class="quest-card__link" href="quest-attic.html">Тайна старого чердака</a></h3>
+                <p class="card-text text-body-secondary">Семейный квест о забытом сундуке и карте, нарисованной сто лет назад.</p>
+                <ul class="quest-card__meta list-unstyled small mt-auto mb-0">
+                  <li><span class="text-body-secondary">Игроки</span> 2–5</li>
+                  <li><span class="text-body-secondary">Время</span> 60 мин</li>
+                  <li><span class="text-body-secondary">Жанр</span> Приключения</li>
+                </ul>
+              </div>
+              <div class="card-footer d-flex justify-content-between align-items-center gap-2">
+                <span class="fw-semibold">от 3 000 ₽</span>
+                <button class="btn btn-sm btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#booking-modal" data-quest="Тайна старого чердака">Забронировать</button>
+              </div>
+            </article>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <article class="card h-100 quest-card quest-card--featured">
+              <a class="ratio ratio-4x3 quest-card__media" href="product.html" tabindex="-1" aria-hidden="true">
+                <img src="images/quests/doctor-z-1.jpg" class="card-img-top object-fit-cover" alt="" loading="lazy" width="800" height="600">
+              </a>
+              <span class="badge text-bg-primary quest-card__tag">Хит</span>
+              <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <span class="difficulty difficulty--medium"><span class="difficulty__pips" aria-hidden="true"><span class="difficulty__pip difficulty__pip--on"></span><span class="difficulty__pip difficulty__pip--on"></span><span class="difficulty__pip"></span></span>Средний</span>
+                  <span class="badge rounded-pill border text-body-secondary" title="Минимальный возраст">12+</span>
+                </div>
+                <h3 class="h5 card-title"><a class="quest-card__link" href="product.html">Лаборатория доктора Z</a></h3>
+                <p class="card-text text-body-secondary">Учёный пропал, оставив незавершённый опыт. До выброса реагента — 75 минут.</p>
+                <ul class="quest-card__meta list-unstyled small mt-auto mb-0">
+                  <li><span class="text-body-secondary">Игроки</span> 2–5</li>
+                  <li><span class="text-body-secondary">Время</span> 75 мин</li>
+                  <li><span class="text-body-secondary">Жанр</span> Фантастика</li>
+                </ul>
+              </div>
+              <div class="card-footer d-flex justify-content-between align-items-center gap-2">
+                <span class="fw-semibold">от 4 200 ₽</span>
+                <button class="btn btn-sm btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#booking-modal" data-quest="Лаборатория доктора Z">Забронировать</button>
+              </div>
+            </article>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <article class="card h-100 quest-card quest-card--featured">
+              <a class="ratio ratio-4x3 quest-card__media" href="quest-ward13.html" tabindex="-1" aria-hidden="true">
+                <img src="images/quests/ward13-1.jpg" class="card-img-top object-fit-cover" alt="" loading="lazy" width="800" height="600">
+              </a>
+              <span class="badge text-bg-primary quest-card__tag">Хит</span><span class="badge text-bg-danger quest-card__tag quest-card__tag--second">С актёром</span>
+              <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <span class="difficulty difficulty--hard"><span class="difficulty__pips" aria-hidden="true"><span class="difficulty__pip difficulty__pip--on"></span><span class="difficulty__pip difficulty__pip--on"></span><span class="difficulty__pip difficulty__pip--on"></span></span>Сложный</span>
+                  <span class="badge rounded-pill border text-body-secondary" title="Минимальный возраст">18+</span>
+                </div>
+                <h3 class="h5 card-title"><a class="quest-card__link" href="quest-ward13.html">Палата №13</a></h3>
+                <p class="card-text text-body-secondary">Заброшенная больница. В тринадцатой палате до сих пор кто-то есть.</p>
+                <ul class="quest-card__meta list-unstyled small mt-auto mb-0">
+                  <li><span class="text-body-secondary">Игроки</span> 2–5</li>
+                  <li><span class="text-body-secondary">Время</span> 90 мин</li>
+                  <li><span class="text-body-secondary">Жанр</span> Хоррор</li>
+                </ul>
+              </div>
+              <div class="card-footer d-flex justify-content-between align-items-center gap-2">
+                <span class="fw-semibold">от 5 500 ₽</span>
+                <button class="btn btn-sm btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#booking-modal" data-quest="Палата №13">Забронировать</button>
+              </div>
+            </article>
+          </div>
+      </div>
+    </section>
+
+    <section class="container py-5" id="how" aria-labelledby="how-title">
+      <h2 class="h3 mb-4" id="how-title">Как проходит игра</h2>
+      <ol class="row g-4 list-unstyled steps mb-0">
+        <li class="col-12 col-sm-6 col-lg-3">
+          <div class="steps__item h-100">
+            <h3 class="h6">Выберите квест</h3>
+            <p class="text-body-secondary small mb-0">Отфильтруйте каталог по сложности, возрасту и размеру команды.</p>
+          </div>
+        </li>
+        <li class="col-12 col-sm-6 col-lg-3">
+          <div class="steps__item h-100">
+            <h3 class="h6">Забронируйте время</h3>
+            <p class="text-body-secondary small mb-0">Свободные сеансы видны на странице квеста. Оплата на месте или онлайн.</p>
+          </div>
+        </li>
+        <li class="col-12 col-sm-6 col-lg-3">
+          <div class="steps__item h-100">
+            <h3 class="h6">Приходите за 15 минут</h3>
+            <p class="text-body-secondary small mb-0">Администратор расскажет правила и проведёт инструктаж по безопасности.</p>
+          </div>
+        </li>
+        <li class="col-12 col-sm-6 col-lg-3">
+          <div class="steps__item h-100">
+            <h3 class="h6">Выберитесь вовремя</h3>
+            <p class="text-body-secondary small mb-0">После игры — разбор загадок и общее фото команды на память.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="container py-5" aria-labelledby="why-title">
+      <h2 class="h3 mb-4" id="why-title">Почему у нас</h2>
+      <div class="row g-4">
+        <div class="col-12 col-md-6 col-lg-3">
+          <h3 class="h6">Безопасно</h3>
+          <p class="text-body-secondary small mb-0">Двери не запираются на ключ, в каждой комнате есть кнопка экстренного выхода и видеонаблюдение.</p>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+          <h3 class="h6">Подсказки по рации</h3>
+          <p class="text-body-secondary small mb-0">Оператор следит за игрой и поможет, если команда застряла дольше 10 минут.</p>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+          <h3 class="h6">Механика, а не замки</h3>
+          <p class="text-body-secondary small mb-0">Вместо десятка навесных замков — электроника, свет, звук и УФ-подсказки.</p>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+          <h3 class="h6">Для любой компании</h3>
+          <p class="text-body-secondary small mb-0">Квесты для семей с детьми от 6 лет, дружеских компаний и корпоративов до 8 человек.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container py-5" aria-labelledby="faq-title">
+      <div class="row g-4">
+        <div class="col-12 col-lg-4">
+          <h2 class="h2 fw-bold" id="faq-title">Частые вопросы</h2>
+          <p class="text-body-secondary">Не нашли ответ? Позвоните нам, администратор поможет выбрать квест и время.</p>
+          <a class="btn btn-outline-light" href="tel:+74950000000">+7 (495) 000-00-00</a>
+        </div>
+        <div class="col-12 col-lg-8">
+          <div class="accordion" id="index-faq">
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#index-faq-0" aria-expanded="true" aria-controls="index-faq-0">Что такое квест-комната?</button>
+              </h3>
+              <div id="index-faq-0" class="accordion-collapse collapse show" data-bs-parent="#index-faq">
+                <div class="accordion-body text-body-secondary">Это игра в реальности: команда заходит в оформленную комнату и за отведённое время разгадывает загадки, ищет тайники и открывает путь к выходу. Нужны внимательность, логика и командная работа, а не физическая сила.</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#index-faq-1" aria-expanded="false" aria-controls="index-faq-1">Сколько человек может играть?</button>
+              </h3>
+              <div id="index-faq-1" class="accordion-collapse collapse" data-bs-parent="#index-faq">
+                <div class="accordion-body text-body-secondary">В зависимости от квеста — от 2 до 8 человек. Количество игроков указано в карточке каждого квеста. Цена за команду не зависит от того, сколько вас пришло.</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#index-faq-2" aria-expanded="false" aria-controls="index-faq-2">Нас закроют в комнате?</button>
+              </h3>
+              <div id="index-faq-2" class="accordion-collapse collapse" data-bs-parent="#index-faq">
+                <div class="accordion-body text-body-secondary">Нет. Двери не запираются на ключ, в каждой комнате есть кнопка экстренного выхода. Оператор следит за игрой по камерам и может остановить её в любой момент.</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#index-faq-3" aria-expanded="false" aria-controls="index-faq-3">Можно ли прийти с детьми?</button>
+              </h3>
+              <div id="index-faq-3" class="accordion-collapse collapse" data-bs-parent="#index-faq">
+                <div class="accordion-body text-body-secondary">Да. Для детей от 6 лет подойдут лёгкие квесты — их можно найти в категории «Для детей». Участники младше 14 лет играют вместе со взрослым.</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#index-faq-4" aria-expanded="false" aria-controls="index-faq-4">Что если мы не успеем выбраться?</button>
+              </h3>
+              <div id="index-faq-4" class="accordion-collapse collapse" data-bs-parent="#index-faq">
+                <div class="accordion-body text-body-secondary">Игра закончится по таймеру, а оператор проведёт вас по оставшимся загадкам и покажет финал. Фото команды на память делаем в любом случае.</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#index-faq-5" aria-expanded="false" aria-controls="index-faq-5">Как забронировать и отменить игру?</button>
+              </h3>
+              <div id="index-faq-5" class="accordion-collapse collapse" data-bs-parent="#index-faq">
+                <div class="accordion-body text-body-secondary">Выберите свободное время на странице квеста или оставьте заявку на странице бронирования. Предоплата не нужна, отменить или перенести игру можно бесплатно за 24 часа.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer border-top mt-5">
+    <div class="container py-5">
+      <div class="row g-4">
+        <div class="col-12 col-md-5">
+          <p class="site-brand mb-2">Квест-Лаборатория</p>
+          <p class="text-body-secondary mb-0">Сеть квест-комнат в Москве. Два филиала, 13 квестов, игры каждый день с 10:00 до 23:30.</p>
+        </div>
+        <div class="col-6 col-md-3">
+          <h2 class="h6 mb-3">Разделы</h2>
+          <ul class="list-unstyled mb-0 d-grid gap-2">
+            <li><a class="link-secondary" href="catalog.html">Квесты</a></li>
+            <li><a class="link-secondary" href="order.html">Бронирование</a></li>
+            <li><a class="link-secondary" href="contacts.html">Контакты</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-4">
+          <h2 class="h6 mb-3">Связаться</h2>
+          <ul class="list-unstyled mb-0 d-grid gap-2">
+            <li><a class="link-secondary" href="tel:+74950000000">+7 (495) 000-00-00</a></li>
+            <li><a class="link-secondary" href="mailto:hello@quest-lab.ru">hello@quest-lab.ru</a></li>
+            <li class="text-body-secondary">Ежедневно 10:00–23:30</li>
+          </ul>
+        </div>
+      </div>
+      <p class="small text-body-secondary mt-4 mb-0">© 2026 Квест-Лаборатория. Учебный проект КР №2, дисциплина «Фронтенд и бэкенд разработка».</p>
+    </div>
+  </footer>
+
+  <div class="modal fade" id="booking-modal" tabindex="-1" aria-labelledby="booking-modal-title" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title h5" id="booking-modal-title">Быстрое бронирование</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <form class="needs-validation" id="booking-form" novalidate>
+          <div class="modal-body">
+            <p class="small text-body-secondary">Поля, отмеченные <span class="text-danger">*</span>, обязательны. Администратор перезвонит в течение 15 минут и подтвердит бронь.</p>
+            <div class="row g-3">
+              <div class="col-12">
+                <label class="form-label" for="booking-quest">Квест <span class="text-danger">*</span></label>
+                <select class="form-select" id="booking-quest" name="quest" required>
+                  <option value="">Выберите квест</option>
+                <option value="Тайна старого чердака">Тайна старого чердака</option>
+                <option value="Кот Шрёдингера">Кот Шрёдингера</option>
+                <option value="Музей забытых вещей">Музей забытых вещей</option>
+                <option value="Лаборатория доктора Z">Лаборатория доктора Z</option>
+                <option value="Ограбление века">Ограбление века</option>
+                <option value="Подводная станция «Глубина»">Подводная станция «Глубина»</option>
+                <option value="Шифр Теслы">Шифр Теслы</option>
+                <option value="Палата №13">Палата №13</option>
+                <option value="Проклятие Пиковой дамы">Проклятие Пиковой дамы</option>
+                <option value="Бункер-47">Бункер-47</option>
+                <option value="Последний сеанс">Последний сеанс</option>
+                <option value="Протокол «Омега»">Протокол «Омега»</option>
+                <option value="Дом на болотах">Дом на болотах</option>
+                </select>
+                <div class="invalid-feedback">Выберите квест.</div>
+              </div>
+              <div class="col-6">
+                <label class="form-label" for="booking-day">День <span class="text-danger">*</span></label>
+                <select class="form-select" id="booking-day" name="day" required>
+                  <option value="Сегодня">Сегодня</option>
+                  <option value="Завтра">Завтра</option>
+                  <option value="Послезавтра">Послезавтра</option>
+                </select>
+              </div>
+              <div class="col-6">
+                <label class="form-label" for="booking-time">Время <span class="text-danger">*</span></label>
+                <input class="form-control" id="booking-time" name="time" type="time" min="10:00" max="22:30" required>
+                <div class="invalid-feedback">Укажите время с 10:00 до 22:30.</div>
+              </div>
+              <div class="col-12">
+                <label class="form-label" for="booking-players">Игроков <span class="text-danger">*</span></label>
+                <select class="form-select" id="booking-players" name="players" required>
+                  <option value="">Сколько вас будет</option>
+                  <option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option>
+                </select>
+                <div class="invalid-feedback">Укажите количество игроков.</div>
+              </div>
+              <div class="col-12">
+                <label class="form-label" for="booking-name">Имя <span class="text-danger">*</span></label>
+                <input class="form-control" id="booking-name" name="name" type="text" autocomplete="given-name" minlength="2" required>
+                <div class="invalid-feedback">Введите имя, минимум 2 буквы.</div>
+              </div>
+              <div class="col-12">
+                <label class="form-label" for="booking-phone">Телефон <span class="text-danger">*</span></label>
+                <div class="input-group has-validation">
+                  <span class="input-group-text">+7</span>
+                  <input class="form-control" id="booking-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="900 000-00-00" pattern="[0-9\s\-\(\)]{10,15}" required>
+                  <div class="invalid-feedback">Введите 10 цифр номера.</div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-check">
+                  <input class="form-check-input" id="booking-agree" name="agree" type="checkbox" required>
+                  <label class="form-check-label" for="booking-agree">Согласен на обработку персональных данных <span class="text-danger">*</span></label>
+                  <div class="invalid-feedback">Без согласия мы не сможем принять бронь.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Отмена</button>
+            <button type="submit" class="btn btn-primary">Отправить заявку</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div class="toast align-items-center border-0 text-bg-success" id="booking-toast" role="status" aria-live="polite" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">Заявка отправлена. Администратор перезвонит в течение 15 минут.</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Закрыть"></button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

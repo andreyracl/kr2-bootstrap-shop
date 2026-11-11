@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" role="img" aria-label="С актёрами">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6e5a9e"/><stop offset="1" stop-color="#2b2440"/></linearGradient></defs>
+<rect width="300" height="400" fill="url(#bg)"/>
+<g transform="translate(30 -35) scale(.8)"><path d="M85 110 q65 -30 130 0 q10 120 -65 190 q-75 -70 -65 -190z" fill="#f2f0ec"/>
+<path d="M110 170 q18 -14 36 0 q-18 12 -36 0z M154 170 q18 -14 36 0 q-18 12 -36 0z" fill="#2b2440"/>
+<path d="M125 235 q25 15 50 0" stroke="#b8b2a8" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M150 190 v28" stroke="#d8d3ca" stroke-width="4"/></g>
+</svg>

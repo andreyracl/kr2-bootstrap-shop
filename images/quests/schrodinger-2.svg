@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Кот Шрёдингера">
+<defs>
+<filter id="blur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="18"/></filter>
+<filter id="blur-s" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5"/></filter>
+<radialGradient id="vig" cx="50%" cy="45%" r="75%"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".75"/></radialGradient>
+<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1a2326"/><stop offset="1" stop-color="#0c1112"/></linearGradient><linearGradient id="box" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9a7a4e"/><stop offset="1" stop-color="#5e4628"/></linearGradient>
+</defs>
+<rect width="800" height="600" fill="url(#bg)"/><circle cx="400" cy="380" r="240" fill="#ffcf86" fill-opacity="0.18" filter="url(#blur)"/><rect x="0" y="470" width="800" height="130" fill="#2a1d14"/><polygon points="200,250 600,250 640,210 240,210" fill="#b08d5c"/><rect x="200" y="250" width="400" height="250" fill="url(#box)"/><polygon points="600,250 640,210 640,460 600,500" fill="#4c381f"/><polygon points="200,250 330,250 300,140 190,170" fill="#a8855a"/><rect x="230" y="262" width="340" height="120" fill="#0b0b0b"/><path d="M320 382 q20 -90 80 -95 q60 5 80 95z" fill="#141414"/><polygon points="345,305 360,255 382,292" fill="#141414"/><polygon points="455,305 440,255 418,292" fill="#141414"/><ellipse cx="378" cy="325" rx="11" ry="8" fill="#e9d36b"/><ellipse cx="422" cy="325" rx="11" ry="8" fill="#e9d36b"/><ellipse cx="378" cy="325" rx="3" ry="7" fill="#111"/><ellipse cx="422" cy="325" rx="3" ry="7" fill="#111"/><g fill="#3c2c18" fill-opacity=".7"><rect x="260" y="410" width="120" height="10"/><rect x="260" y="430" width="80" height="10"/></g><path d="M120 470 v-70 m-20 0 h40" stroke="#b88b3e" stroke-width="6"/>
+<rect width="800" height="600" fill="url(#vig)"/>
+</svg>

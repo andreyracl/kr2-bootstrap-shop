@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" role="img" aria-label="Новинки">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3f7fb0"/><stop offset="1" stop-color="#1d3a55"/></linearGradient></defs>
+<rect width="300" height="400" fill="url(#bg)"/>
+<g transform="translate(30 -35) scale(.8)"><rect x="80" y="190" width="140" height="120" rx="6" fill="#e05a6c"/><rect x="70" y="160" width="160" height="40" rx="6" fill="#f07384"/>
+<rect x="138" y="160" width="24" height="150" fill="#ffd36b"/><path d="M150 160 q-40 -50 -55 -15 q10 20 55 15 q45 5 55 -15 q-15 -35 -55 15z" fill="#ffd36b"/>
+<g fill="#ffe9a8"><circle cx="70" cy="110" r="5"/><circle cx="235" cy="95" r="6"/><circle cx="215" cy="140" r="4"/><circle cx="95" cy="70" r="4"/></g></g>
+</svg>

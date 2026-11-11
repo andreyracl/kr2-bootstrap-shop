@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Шифр Теслы">
+<defs>
+<filter id="blur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="18"/></filter>
+<filter id="blur-s" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5"/></filter>
+<radialGradient id="vig" cx="50%" cy="45%" r="75%"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".75"/></radialGradient>
+<linearGradient id="desk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a2f1c"/><stop offset="1" stop-color="#22150c"/></linearGradient><linearGradient id="page" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f1e6c8"/><stop offset="1" stop-color="#d8c79c"/></linearGradient>
+</defs>
+<rect width="800" height="600" fill="url(#desk)"/><circle cx="400" cy="300" r="280" fill="#ffd28a" fill-opacity="0.2" filter="url(#blur)"/><g transform="rotate(-4 400 300)"><path d="M120 120 q140 -20 280 10 v360 q-140 -30 -280 -10z" fill="url(#page)"/><path d="M400 130 q140 -30 280 -10 v360 q-140 -20 -280 10z" fill="url(#page)"/><line x1="400" y1="130" x2="400" y2="500" stroke="#a89566" stroke-width="3"/><g stroke="#3b3022" stroke-width="2.5" fill="none" stroke-opacity=".85"><circle cx="250" cy="230" r="55"/><circle cx="250" cy="230" r="25"/><path d="M195 230 h110 M250 175 v110"/><path d="M170 340 h170 M170 370 h120 M170 400 h150"/><path d="M460 180 v120 m-20 0 h40 m-30 -100 h20 m-25 25 h30 m-35 25 h40"/><path d="M540 190 l30 30 l-30 30 l30 30"/><path d="M450 360 h170 M450 390 h110 M450 420 h150"/></g><g fill="#a3281f" font-family="Georgia,serif" font-size="22"><text x="520" y="330">7 · 3 · 11</text></g></g><g transform="translate(620 470) rotate(-35)"><rect x="-6" y="-120" width="12" height="190" rx="5" fill="#222"/><path d="M-6 70 l6 26 l6 -26z" fill="#c9a24a"/></g><g transform="translate(130 480)"><circle r="40" fill="#b88b3e"/><circle r="30" fill="#efe3c3"/><path d="M0 0 v-22 M0 0 l14 8" stroke="#222" stroke-width="3"/></g>
+<rect width="800" height="600" fill="url(#vig)"/>
+</svg>

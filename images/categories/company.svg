@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" role="img" aria-label="Для компании от 6 человек">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4f7286"/><stop offset="1" stop-color="#22323f"/></linearGradient></defs>
+<rect width="300" height="400" fill="url(#bg)"/>
+<g transform="translate(30 -35) scale(.8)"><g fill="#d7e3ea"><circle cx="150" cy="150" r="32"/><path d="M95 300 q0 -95 55 -95 q55 0 55 95z"/></g>
+<g fill="#9fb8c6"><circle cx="85" cy="185" r="25"/><path d="M40 310 q0 -80 45 -80 q30 0 40 30 l-10 50z"/><circle cx="215" cy="185" r="25"/><path d="M260 310 q0 -80 -45 -80 q-30 0 -40 30 l10 50z"/></g></g>
+</svg>

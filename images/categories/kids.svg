@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" role="img" aria-label="Для детей">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4f9a6a"/><stop offset="1" stop-color="#1f4a3a"/></linearGradient></defs>
+<rect width="300" height="400" fill="url(#bg)"/>
+<g transform="translate(30 -35) scale(.8)"><path d="M100 120 q-10 -40 10 -60 q0 30 15 50z" fill="#d9c49a"/><path d="M200 120 q10 -40 -10 -60 q0 30 -15 50z" fill="#d9c49a"/>
+<ellipse cx="150" cy="230" rx="105" ry="115" fill="#7cc576"/><ellipse cx="150" cy="260" rx="70" ry="60" fill="#9ad68f"/>
+<circle cx="115" cy="190" r="26" fill="#fff"/><circle cx="185" cy="190" r="26" fill="#fff"/><circle cx="120" cy="194" r="12" fill="#1d2a1d"/><circle cx="180" cy="194" r="12" fill="#1d2a1d"/>
+<path d="M105 255 q45 45 90 0" fill="#3a1f1f"/><path d="M118 258 l8 12 l8 -12 M150 262 l8 12 l8 -12" fill="#fff"/></g>
+</svg>

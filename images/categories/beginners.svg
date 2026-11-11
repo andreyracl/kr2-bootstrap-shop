@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" role="img" aria-label="Для новичков">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7ea84a"/><stop offset="1" stop-color="#2e4a24"/></linearGradient></defs>
+<rect width="300" height="400" fill="url(#bg)"/>
+<g transform="translate(30 -35) scale(.8)"><circle cx="150" cy="150" r="52" fill="none" stroke="#ffd36b" stroke-width="20"/><rect x="140" y="195" width="20" height="130" rx="4" fill="#ffd36b"/>
+<rect x="160" y="260" width="34" height="16" rx="3" fill="#ffd36b"/><rect x="160" y="295" width="24" height="16" rx="3" fill="#ffd36b"/></g>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" role="img" aria-label="Страшные">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8c2f45"/><stop offset="1" stop-color="#3a1420"/></linearGradient></defs>
+<rect width="300" height="400" fill="url(#bg)"/>
+<g transform="translate(30 -35) scale(.8)"><ellipse cx="150" cy="330" rx="90" ry="14" fill="#000" fill-opacity=".35"/><rect x="122" y="180" width="56" height="150" rx="6" fill="#efe6d6"/><path d="M122 200 q14 20 0 40" fill="#d9cdb8"/>
+<path d="M150 180 v-14" stroke="#3a2a20" stroke-width="4"/><path d="M150 100 q26 34 0 66 q-26 -32 0 -66z" fill="#ffb347"/><path d="M150 128 q12 18 0 34 q-12 -16 0 -34z" fill="#fff3c4"/>
+<circle cx="150" cy="140" r="70" fill="#ffb347" fill-opacity=".12"/></g>
+</svg>

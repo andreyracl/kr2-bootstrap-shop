@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ru" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Заявка на бронирование квест-комнаты: выберите квест, дату, время и количество игроков.">
+  <title>Бронирование — Квест-Лаборатория</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body>
+  <a class="visually-hidden-focusable position-absolute top-0 start-0 m-2 btn btn-primary" href="#main">Перейти к содержимому</a>
+
+  <header class="sticky-top site-header">
+  <nav class="navbar navbar-expand-lg site-navbar" aria-label="Основная навигация">
+    <div class="container">
+      <a class="navbar-brand site-brand" href="index.html">
+        <span class="site-brand__mark" aria-hidden="true"></span>
+        Квест-Лаборатория
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Открыть меню">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="main-nav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-lg-2">
+          <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
+          <li class="nav-item"><a class="nav-link" href="catalog.html">Квесты</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="order.html">Бронирование</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
+        </ul>
+        <a class="btn btn-primary ms-lg-3" href="order.html">Забронировать</a>
+      </div>
+    </div>
+  </nav>
+  </header>
+
+  <main id="main" class="container py-5">
+    <nav aria-label="Хлебные крошки">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Главная</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Бронирование</li>
+      </ol>
+    </nav>
+
+    <div class="row g-4 g-lg-5">
+      <div class="col-12 col-lg-8">
+        <h1 class="h2 mb-2">Заявка на бронирование</h1>
+        <p class="text-body-secondary mb-4">Подходит, если нужно подобрать время для большой компании, отметить день рождения или задать вопрос. Для быстрой брони выберите время на странице квеста.</p>
+
+        <form class="needs-validation" id="order-form" novalidate>
+          <div class="alert alert-info" role="alert">
+            Поля, отмеченные <span class="text-danger">*</span>, обязательны. Мы перезвоним в течение 15 минут в рабочее время.
+          </div>
+
+          <fieldset class="card mb-4">
+            <legend class="card-header h6 mb-0 w-100 float-none">Игра</legend>
+            <div class="card-body">
+              <div class="row g-3">
+                <div class="col-12">
+                  <label class="form-label" for="order-quest">Квест <span class="text-danger">*</span></label>
+                  <select class="form-select" id="order-quest" name="quest" required>
+                    <option value="">Выберите квест</option>
+                      <optgroup label="Лёгкий">
+                        <option value="Тайна старого чердака">Тайна старого чердака (2–5 игроков, 6+)</option>
+                        <option value="Кот Шрёдингера">Кот Шрёдингера (2–4 игроков, 12+)</option>
+                        <option value="Музей забытых вещей">Музей забытых вещей (3–6 игроков, 6+)</option>
+                      </optgroup>
+                      <optgroup label="Средний">
+                        <option value="Лаборатория доктора Z">Лаборатория доктора Z (2–5 игроков, 12+)</option>
+                        <option value="Ограбление века">Ограбление века (3–6 игроков, 14+)</option>
+                        <option value="Подводная станция «Глубина»">Подводная станция «Глубина» (2–6 игроков, 12+)</option>
+                        <option value="Шифр Теслы">Шифр Теслы (2–4 игроков, 12+)</option>
+                      </optgroup>
+                      <optgroup label="Сложный">
+                        <option value="Палата №13">Палата №13 (2–5 игроков, 18+)</option>
+                        <option value="Проклятие Пиковой дамы">Проклятие Пиковой дамы (3–6 игроков, 16+)</option>
+                        <option value="Бункер-47">Бункер-47 (4–8 игроков, 16+)</option>
+                        <option value="Последний сеанс">Последний сеанс (2–6 игроков, 18+)</option>
+                        <option value="Протокол «Омега»">Протокол «Омега» (2–5 игроков, 14+)</option>
+                        <option value="Дом на болотах">Дом на болотах (3–7 игроков, 16+)</option>
+                      </optgroup>
+                    <option value="any">Пока не выбрали — нужна консультация</option>
+                  </select>
+                  <div class="invalid-feedback">Выберите квест или вариант «нужна консультация».</div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <label class="form-label" for="order-date">Дата <span class="text-danger">*</span></label>
+                  <input class="form-control" id="order-date" name="date" type="date" required>
+                  <div class="invalid-feedback">Укажите дату игры.</div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <label class="form-label" for="order-time">Удобное время</label>
+                  <select class="form-select" id="order-time" name="time">
+                    <option value="">Любое</option>
+                    <option value="morning">Утро, 10:00–13:00</option>
+                    <option value="day">День, 13:00–17:00</option>
+                    <option value="evening">Вечер, 17:00–20:00</option>
+                    <option value="night">Поздний вечер, после 20:00</option>
+                  </select>
+                </div>
+                <div class="col-12 col-md-6">
+                  <label class="form-label" for="order-players">Количество игроков <span class="text-danger">*</span></label>
+                  <div class="input-group has-validation">
+                    <input class="form-control" id="order-players" name="players" type="number" min="2" max="8" value="4" required>
+                    <span class="input-group-text">чел.</span>
+                    <div class="invalid-feedback">От 2 до 8 человек.</div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <label class="form-label" for="order-youngest">Возраст младшего игрока</label>
+                  <div class="input-group">
+                    <input class="form-control" id="order-youngest" name="youngest" type="number" min="6" max="99" placeholder="например, 12">
+                    <span class="input-group-text">лет</span>
+                  </div>
+                  <div class="form-text">Поможем проверить, подходит ли квест по возрасту.</div>
+                </div>
+                <div class="col-12">
+                  <span class="form-label d-block">Повод</span>
+                  <div class="d-flex flex-wrap gap-2" role="group" aria-label="Повод">
+                    <input type="radio" class="btn-check" name="occasion" id="occ-friends" value="friends" checked>
+                    <label class="btn btn-outline-secondary btn-sm" for="occ-friends">С друзьями</label>
+                    <input type="radio" class="btn-check" name="occasion" id="occ-bday" value="birthday">
+                    <label class="btn btn-outline-secondary btn-sm" for="occ-bday">День рождения</label>
+                    <input type="radio" class="btn-check" name="occasion" id="occ-family" value="family">
+                    <label class="btn btn-outline-secondary btn-sm" for="occ-family">С детьми</label>
+                    <input type="radio" class="btn-check" name="occasion" id="occ-corp" value="corporate">
+                    <label class="btn btn-outline-secondary btn-sm" for="occ-corp">Корпоратив</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="card mb-4">
+            <legend class="card-header h6 mb-0 w-100 float-none">Контакты</legend>
+            <div class="card-body">
+              <div class="row g-3">
+                <div class="col-12 col-md-6">
+                  <label class="form-label" for="order-name">Имя <span class="text-danger">*</span></label>
+                  <input class="form-control" id="order-name" name="name" type="text" autocomplete="name" minlength="2" required>
+                  <div class="invalid-feedback">Введите имя, минимум 2 буквы.</div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <label class="form-label" for="order-phone">Телефон <span class="text-danger">*</span></label>
+                  <div class="input-group has-validation">
+                    <span class="input-group-text">+7</span>
+                    <input class="form-control" id="order-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="900 000-00-00" pattern="[0-9\s\-\(\)]{10,15}" required>
+                    <div class="invalid-feedback">Введите 10 цифр номера.</div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <label class="form-label" for="order-email">E-mail</label>
+                  <input class="form-control" id="order-email" name="email" type="email" autocomplete="email" placeholder="для подтверждения брони">
+                  <div class="invalid-feedback">Проверьте адрес: в нём должны быть @ и домен.</div>
+                </div>
+                <div class="col-12">
+                  <span class="form-label d-block">Как связаться</span>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="contact" id="contact-call" value="call" checked>
+                    <label class="form-check-label" for="contact-call">Звонок</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="contact" id="contact-msg" value="messenger">
+                    <label class="form-check-label" for="contact-msg">Мессенджер</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="contact" id="contact-mail" value="email">
+                    <label class="form-check-label" for="contact-mail">E-mail</label>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <label class="form-label" for="order-comment">Комментарий</label>
+                  <textarea class="form-control" id="order-comment" name="comment" rows="3" placeholder="Например: будет сюрприз имениннику, нужен торт в лаунже"></textarea>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="form-check form-switch mb-2">
+            <input class="form-check-input" type="checkbox" role="switch" id="order-news" name="news">
+            <label class="form-check-label" for="order-news">Сообщать о новых квестах</label>
+          </div>
+          <div class="form-check mb-4">
+            <input class="form-check-input" type="checkbox" id="order-agree" name="agree" required>
+            <label class="form-check-label" for="order-agree">Согласен на обработку персональных данных <span class="text-danger">*</span></label>
+            <div class="invalid-feedback">Без согласия мы не сможем принять заявку.</div>
+          </div>
+
+          <div class="d-flex flex-wrap gap-2">
+            <button class="btn btn-primary btn-lg" type="submit">Отправить заявку</button>
+            <button class="btn btn-outline-secondary btn-lg" type="reset">Очистить</button>
+          </div>
+        </form>
+      </div>
+
+      <aside class="col-12 col-lg-4">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h2 class="h6">Что будет дальше</h2>
+            <ol class="small text-body-secondary mb-0 ps-3 d-grid gap-2">
+              <li>Администратор перезвонит и предложит свободное время.</li>
+              <li>Бронь подтверждается без предоплаты, отменить можно за 24 часа.</li>
+              <li>Накануне игры пришлём адрес и схему прохода.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h2 class="h6">Филиалы</h2>
+            <p class="small mb-3"><span class="fw-semibold">Бауманская</span><br><span class="text-body-secondary">ул. Бауманская, 7, стр. 2<br>м. Бауманская, 5 минут пешком</span></p>
+            <p class="small mb-3"><span class="fw-semibold">Таганская</span><br><span class="text-body-secondary">ул. Таганская, 24, вход со двора<br>м. Таганская, 7 минут пешком</span></p>
+            <a class="btn btn-sm btn-outline-light" href="contacts.html">Как добраться</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer border-top mt-5">
+    <div class="container py-5">
+      <div class="row g-4">
+        <div class="col-12 col-md-5">
+          <p class="site-brand mb-2">Квест-Лаборатория</p>
+          <p class="text-body-secondary mb-0">Сеть квест-комнат в Москве. Два филиала, 13 квестов, игры каждый день с 10:00 до 23:30.</p>
+        </div>
+        <div class="col-6 col-md-3">
+          <h2 class="h6 mb-3">Разделы</h2>
+          <ul class="list-unstyled mb-0 d-grid gap-2">
+            <li><a class="link-secondary" href="catalog.html">Квесты</a></li>
+            <li><a class="link-secondary" href="order.html">Бронирование</a></li>
+            <li><a class="link-secondary" href="contacts.html">Контакты</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-4">
+          <h2 class="h6 mb-3">Связаться</h2>
+          <ul class="list-unstyled mb-0 d-grid gap-2">
+            <li><a class="link-secondary" href="tel:+74950000000">+7 (495) 000-00-00</a></li>
+            <li><a class="link-secondary" href="mailto:hello@quest-lab.ru">hello@quest-lab.ru</a></li>
+            <li class="text-body-secondary">Ежедневно 10:00–23:30</li>
+          </ul>
+        </div>
+      </div>
+      <p class="small text-body-secondary mt-4 mb-0">© 2026 Квест-Лаборатория. Учебный проект КР №2, дисциплина «Фронтенд и бэкенд разработка».</p>
+    </div>
+  </footer>
+
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div class="toast align-items-center border-0 text-bg-success" id="booking-toast" role="status" aria-live="polite" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">Заявка отправлена. Администратор перезвонит в течение 15 минут.</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Закрыть"></button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

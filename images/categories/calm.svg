@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" role="img" aria-label="Нестрашные квесты">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c99a52"/><stop offset="1" stop-color="#6b4a1f"/></linearGradient></defs>
+<rect width="300" height="400" fill="url(#bg)"/>
+<g transform="translate(30 -35) scale(.8)"><rect x="70" y="120" width="160" height="190" rx="6" fill="#e9d2a3"/><path d="M70 120 h160 v18 h-160z" fill="#d6b77c"/>
+<g stroke="#a07c45" stroke-width="3" fill="none"><path d="M95 170 h80"/><path d="M95 195 h110"/><path d="M95 220 h60"/><path d="M110 260 l20 -15 l25 20 l30 -25"/></g>
+<circle cx="190" cy="230" r="38" fill="none" stroke="#3b2a14" stroke-width="10"/><circle cx="190" cy="230" r="30" fill="#ffffff" fill-opacity=".35"/><path d="M218 258 l40 40" stroke="#3b2a14" stroke-width="14" stroke-linecap="round"/></g>
+</svg>
