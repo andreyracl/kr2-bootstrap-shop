@@ -3,7 +3,8 @@
 // 1) подставляет квест, день и время в модальное окно;
 // 2) проверяет формы встроенной валидацией Bootstrap;
 // 3) показывает уведомление (toast) после отправки;
-// 4) прокручивает ленту категорий на главной кнопками « и ».
+// 4) прокручивает ленту категорий на главной кнопками « и »;
+// 5) показывает поле «Режим игры» только для хоррор-квестов.
 // ==========================================================
 
 const bookingModal = document.getElementById('booking-modal');
@@ -22,9 +23,17 @@ if (bookingModal) {
     const day = button.dataset.day;
     const time = button.dataset.time;
 
-    if (quest) bookingModal.querySelector('#booking-quest').value = quest;
+    const questSelect = bookingModal.querySelector('#booking-quest');
+    if (quest) questSelect.value = quest;
     if (day) bookingModal.querySelector('#booking-day').value = day;
     bookingModal.querySelector('#booking-time').value = time || '';
+
+    // Сообщаем полю «Режим игры», что квест поменялся (см. пункт 5).
+    questSelect.dispatchEvent(new Event('change'));
+
+    // Если на странице хоррор-квеста выбран режим — переносим его в форму.
+    const pageMode = document.querySelector('input[name="quest-mode"]:checked');
+    if (pageMode) bookingModal.querySelector('#booking-mode').value = pageMode.value;
   });
 }
 
@@ -72,4 +81,24 @@ document.querySelectorAll('.category-scroll-btn').forEach((button) => {
     const direction = Number(button.dataset.scroll);
     categoryList.scrollBy({ left: direction * categoryList.clientWidth * 0.8 });
   });
+});
+
+// 5. Поле «Режим игры».
+// У блока поля есть атрибут data-mode-for с id списка квестов.
+// У хоррор-квестов в этом списке есть атрибут data-horror.
+// Если выбран хоррор-квест — поле видно и обязательно, иначе скрыто и выключено
+// (выключенное поле браузер не проверяет и не отправляет).
+document.querySelectorAll('[data-mode-for]').forEach((field) => {
+  const questSelect = document.getElementById(field.dataset.modeFor);
+  const modeSelect = field.querySelector('select');
+
+  const update = () => {
+    const isHorror = questSelect.selectedOptions[0]?.hasAttribute('data-horror') ?? false;
+    field.classList.toggle('d-none', !isHorror);
+    modeSelect.disabled = !isHorror;
+  };
+
+  questSelect.addEventListener('change', update);
+  questSelect.form.addEventListener('reset', () => setTimeout(update));
+  update();
 });

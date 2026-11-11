@@ -34,7 +34,6 @@
           <li class="nav-item"><a class="nav-link active" aria-current="page" href="order.html">Бронирование</a></li>
           <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
         </ul>
-        <a class="btn btn-primary ms-lg-3" href="order.html">Забронировать</a>
       </div>
     </div>
   </nav>
@@ -78,10 +77,10 @@
                         <option value="Шифр Теслы">Шифр Теслы (2–4 игроков, 12+)</option>
                       </optgroup>
                       <optgroup label="Сложный">
-                        <option value="Палата №13">Палата №13 (2–5 игроков, 18+)</option>
+                        <option value="Палата №13" data-horror>Палата №13 (2–5 игроков, 18+)</option>
                         <option value="Проклятие Пиковой дамы">Проклятие Пиковой дамы (3–6 игроков, 16+)</option>
                         <option value="Бункер-47">Бункер-47 (4–8 игроков, 16+)</option>
-                        <option value="Последний сеанс">Последний сеанс (2–6 игроков, 18+)</option>
+                        <option value="Последний сеанс" data-horror>Последний сеанс (2–6 игроков, 18+)</option>
                         <option value="Протокол «Омега»">Протокол «Омега» (2–5 игроков, 14+)</option>
                         <option value="Дом на болотах">Дом на болотах (3–7 игроков, 16+)</option>
                       </optgroup>
@@ -119,6 +118,15 @@
                     <span class="input-group-text">лет</span>
                   </div>
                   <div class="form-text">Поможем проверить, подходит ли квест по возрасту.</div>
+                </div>
+                <div class="col-12 d-none" data-mode-for="order-quest">
+                  <label class="form-label" for="order-mode">Режим игры <span class="text-danger">*</span></label>
+                  <select class="form-select" id="order-mode" name="mode" required disabled>
+                    <option value="soft">Лайт — актёр не прикасается</option>
+                    <option value="light" selected>Медиум — касания руки и плеча</option>
+                    <option value="hard">Хард — удержание, отдельная комната</option>
+                  </select>
+                  <div class="form-text">Выбор режима есть только в хоррор-квестах с актёрами.</div>
                 </div>
                 <div class="col-12">
                   <span class="form-label d-block">Повод</span>
