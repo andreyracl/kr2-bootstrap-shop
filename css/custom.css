@@ -593,3 +593,62 @@ a:focus-visible,
 .booking-summary {
   background-color: var(--bs-tertiary-bg);
 }
+
+
+/* ---------- 18. Иконки, подвал, карты ---------- */
+
+/* Линейные SVG-иконки берут цвет текста (currentColor) */
+.icon {
+  flex: 0 0 auto;
+  width: 1.1rem;
+  height: 1.1rem;
+  color: var(--bs-primary);
+}
+
+.icon--lg {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.site-footer__brand {
+  color: var(--bs-emphasis-color);
+  text-decoration: none;
+}
+
+.site-footer__brand:hover {
+  color: var(--bs-emphasis-color);
+}
+
+/* Карта Яндекса в карточке филиала */
+.contact-map {
+  background-color: var(--bs-tertiary-bg);
+}
+
+.contact-map iframe {
+  border: 0;
+}
+
+
+/* ---------- 19. Страница бронирования: факты, шаги, диаграммы ---------- */
+
+.order-fact {
+  padding: 1rem;
+  border: 1px solid var(--bs-border-color);
+  border-radius: var(--bs-border-radius-lg);
+  background-color: rgba(16, 19, 23, .5);
+}
+
+/* Номер шага в заголовке блока формы */
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: .6rem;
+  border-radius: 50%;
+  font-size: .8rem;
+  font-weight: 700;
+  color: #ffffff;
+  background-color: var(--bs-primary);
+}
