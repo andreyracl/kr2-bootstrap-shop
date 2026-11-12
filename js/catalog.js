@@ -3,7 +3,8 @@
 // У каждой колонки с карточкой есть data-атрибуты:
 // data-difficulty, data-genre, data-age, data-min-players,
 // data-max-players, data-features.
-// Скрипт сравнивает их с выбранными фильтрами и прячет лишние карточки.
+// Скрипт сравнивает их с выбранными фильтрами и прячет лишние карточки,
+// а также плавно показывает карточки при прокрутке и после смены фильтров.
 // ==========================================================
 
 const filtersForm = document.getElementById('filters-form');
@@ -76,11 +77,76 @@ function applyFiltersFromUrl() {
   applyFilters();
 }
 
+// ---------- Анимация появления карточек ----------
+// Класс reveal прячет карточку (прозрачная, чуть ниже и меньше),
+// класс is-visible плавно возвращает её на место. Классы ставит только JS:
+// если скрипт не загрузился, карточки просто видны сразу.
+// --reveal-delay — задержка, чтобы карточки появлялись по очереди, «волной».
+const canAnimate = !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  && 'IntersectionObserver' in window;
+
+let revealObserver = null;
+
+if (canAnimate) {
+  let firstBatch = true;
+
+  // Карточка появляется, когда хотя бы 15 % её высоты попадает на экран.
+  revealObserver = new IntersectionObserver((entries) => {
+    let order = 0;
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      // Первую «волну» немного задерживаем, пока исчезает экран загрузки.
+      const base = firstBatch ? 350 : 0;
+      entry.target.style.setProperty('--reveal-delay', `${base + order * 90}ms`);
+      entry.target.classList.add('is-visible');
+      revealObserver.unobserve(entry.target);
+      order += 1;
+    });
+    firstBatch = false;
+  }, { threshold: 0.15 });
+
+  questItems.forEach((item) => {
+    item.classList.add('reveal');
+    revealObserver.observe(item);
+  });
+}
+
+// После смены фильтров заново «проигрываем» появление оставшихся карточек.
+function replayReveal() {
+  if (!canAnimate) return;
+  const visibleItems = Array.from(questItems).filter((item) => !item.classList.contains('d-none'));
+
+  visibleItems.forEach((item, index) => {
+    revealObserver.unobserve(item);
+    // reveal--instant отключает переход, чтобы карточка спряталась мгновенно.
+    item.classList.add('reveal--instant');
+    item.classList.remove('is-visible');
+    item.style.setProperty('--reveal-delay', `${Math.min(index, 8) * 60}ms`);
+  });
+
+  // Чтение offsetHeight заставляет браузер применить «скрытое» состояние прямо сейчас.
+  void questItems[0].offsetHeight;
+
+  // В следующем кадре возвращаем переход и запускаем появление.
+  requestAnimationFrame(() => {
+    visibleItems.forEach((item) => {
+      item.classList.remove('reveal--instant');
+      item.classList.add('is-visible');
+    });
+  });
+}
+
 if (filtersForm) {
-  filtersForm.addEventListener('change', applyFilters);
+  filtersForm.addEventListener('change', () => {
+    applyFilters();
+    replayReveal();
+  });
 
   // После сброса формы значения меняются не сразу, поэтому ждём один тик.
-  filtersForm.addEventListener('reset', () => setTimeout(applyFilters));
+  filtersForm.addEventListener('reset', () => setTimeout(() => {
+    applyFilters();
+    replayReveal();
+  }));
 
   emptyReset.addEventListener('click', () => filtersForm.reset());
 

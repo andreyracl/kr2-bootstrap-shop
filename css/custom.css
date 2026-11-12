@@ -652,3 +652,285 @@ a:focus-visible,
   color: #ffffff;
   background-color: var(--bs-primary);
 }
+
+
+/* ---------- 20. Анимации загрузки страниц ---------- */
+
+/* Экран загрузки: знак логотипа пульсирует, затем экран плавно исчезает.
+   Всё на CSS, поэтому работает даже без JavaScript. */
+.page-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: grid;
+  place-items: center;
+  background-color: var(--bs-body-bg);
+  pointer-events: none;
+  animation: loader-out .35s ease .35s forwards;
+}
+
+.page-loader__mark {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: var(--bs-primary);
+  animation: loader-pulse .7s ease-in-out infinite alternate;
+}
+
+@keyframes loader-pulse {
+  from { transform: scale(.7); opacity: .5; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes loader-out {
+  to { opacity: 0; visibility: hidden; }
+}
+
+/* Содержимое страницы мягко поднимается снизу */
+main {
+  animation: page-in .5s ease .3s both;
+}
+
+@keyframes page-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* При переходе на другую страницу содержимое гаснет (класс ставит site.js) */
+body.is-leaving main,
+body.is-leaving .site-footer {
+  opacity: 0;
+  transition: opacity .2s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-loader { display: none; }
+  main { animation: none; }
+}
+
+
+/* ---------- 21. Шапка: поиск и кабинет ---------- */
+
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+}
+
+.btn-icon .icon {
+  color: currentColor;
+}
+
+/* Миниатюра квеста в результатах поиска */
+.search-result__img {
+  flex: 0 0 auto;
+  width: 96px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: var(--bs-border-radius);
+}
+
+
+/* ---------- 22. Форма отзыва: выбор оценки звёздами ---------- */
+
+/* Звёзды идут в разметке от 5 к 1, а flex-direction: row-reverse
+   показывает их слева направо. Так через «~» подсвечиваются
+   выбранная звезда и все звёзды левее неё. */
+.star-input {
+  display: inline-flex;
+  flex-direction: row-reverse;
+  gap: .25rem;
+}
+
+.star-input__star {
+  font-size: 1.75rem;
+  line-height: 1;
+  color: var(--bs-border-color);
+  cursor: pointer;
+  transition: color .15s;
+}
+
+.star-input__star:hover,
+.star-input__star:hover ~ .star-input__star,
+.btn-check:checked ~ .star-input__star {
+  color: #f2c14e;
+}
+
+.btn-check:focus-visible + .star-input__star {
+  outline: 2px solid var(--bs-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.was-validated .star-input:has(:invalid) .star-input__star {
+  color: rgba(242, 102, 92, .6);
+}
+
+.review-form {
+  background-color: var(--bs-secondary-bg);
+}
+
+/* Только что добавленный отзыв появляется с подсветкой */
+.review-card--new {
+  border-color: var(--bs-primary);
+  animation: page-in .4s ease both;
+}
+
+
+/* ---------- 23. Личный кабинет ---------- */
+
+.account-avatar {
+  width: 4rem;
+  height: 4rem;
+  font-size: 1.5rem;
+}
+
+
+/* ---------- 24. Виджет чата с консультантом ---------- */
+
+.chat-widget {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 1040; /* выше шапки, но ниже модальных окон Bootstrap */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: .75rem;
+}
+
+.chat-widget__toggle {
+  width: 3.5rem;
+  height: 3.5rem;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .4);
+}
+
+.chat-widget__toggle .icon {
+  color: #ffffff;
+}
+
+.chat-widget__panel {
+  width: min(22rem, calc(100vw - 2.5rem));
+  max-height: min(32rem, calc(100vh - 7rem));
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: var(--bs-secondary-bg);
+  box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, .5);
+  animation: chat-in .2s ease both;
+}
+
+/* hidden должен перебивать display: flex */
+.chat-widget__panel[hidden] {
+  display: none;
+}
+
+@keyframes chat-in {
+  from { opacity: 0; transform: translateY(10px) scale(.98); }
+  to { opacity: 1; transform: none; }
+}
+
+.chat-widget__avatar {
+  width: 2.25rem;
+  height: 2.25rem;
+}
+
+.chat-widget__status {
+  color: var(--ql-easy);
+}
+
+.chat-widget__messages {
+  flex: 1 1 auto;
+  min-height: 10rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+/* Сообщения: консультант слева, пользователь справа */
+.chat-msg {
+  max-width: 85%;
+  padding: .5rem .75rem;
+  border-radius: 1rem;
+  font-size: .875rem;
+  line-height: 1.4;
+}
+
+.chat-msg--bot {
+  align-self: flex-start;
+  background-color: var(--bs-tertiary-bg);
+  border: 1px solid var(--bs-border-color);
+  border-bottom-left-radius: .25rem;
+}
+
+.chat-msg--user {
+  align-self: flex-end;
+  color: #ffffff;
+  background-color: var(--bs-primary);
+  border-bottom-right-radius: .25rem;
+}
+
+.chat-msg--typing {
+  align-self: flex-start;
+  font-style: italic;
+  color: var(--bs-secondary-color);
+}
+
+.chat-widget__quick .btn {
+  font-size: .75rem;
+}
+
+
+/* ---------- 25. Появление карточек в каталоге ---------- */
+
+/* Начальное состояние: карточка прозрачная, ниже и чуть меньше.
+   Класс reveal ставит catalog.js, поэтому без JavaScript карточки видны сразу. */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px) scale(.97);
+  transition:
+    opacity .55s ease var(--reveal-delay, 0ms),
+    transform .55s cubic-bezier(.2, .7, .3, 1) var(--reveal-delay, 0ms);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Мгновенно спрятать карточку перед повторной анимацией (после смены фильтров) */
+.reveal--instant,
+.reveal--instant .quest-card__media img {
+  transition: none !important;
+}
+
+/* Картинка внутри карточки при появлении слегка «приближается» */
+.reveal .quest-card__media img {
+  transform: scale(1.08);
+  transition: transform .9s ease var(--reveal-delay, 0ms);
+}
+
+.reveal.is-visible .quest-card__media img {
+  transform: none;
+}
+
+/* Наведение на появившуюся карточку — лёгкий подъём */
+.reveal.is-visible .quest-card {
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+
+.reveal.is-visible .quest-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--bs-primary-border-subtle);
+  box-shadow: 0 .75rem 2rem rgba(0, 0, 0, .35);
+}
+
+/* Увеличение картинки при наведении сохраняется */
+.reveal.is-visible .quest-card__media:hover img {
+  transform: scale(1.04);
+  transition-delay: 0ms;
+}

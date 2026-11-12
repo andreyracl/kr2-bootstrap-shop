@@ -12,9 +12,12 @@
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
     rel="stylesheet"
   >
-  <link rel="stylesheet" href="css/custom.css?v=6">
+  <link rel="stylesheet" href="css/custom.css?v=9">
 </head>
 <body>
+  <div class="page-loader" aria-hidden="true">
+    <span class="page-loader__mark"></span>
+  </div>
   <a class="visually-hidden-focusable position-absolute top-0 start-0 m-2 btn btn-primary" href="#main">Перейти к содержимому</a>
 
   <header class="sticky-top site-header">
@@ -34,6 +37,14 @@
           <li class="nav-item"><a class="nav-link" href="order.html">Бронирование</a></li>
           <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
         </ul>
+        <div class="d-flex gap-2 ms-lg-3 pb-3 pb-lg-0">
+          <button class="btn btn-outline-secondary btn-icon" type="button" data-bs-toggle="modal" data-bs-target="#search-modal" aria-label="Поиск квеста">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span class="d-lg-none ms-2">Поиск</span>
+          </button>
+          <a class="btn btn-outline-secondary btn-icon" href="account.html">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><span class="ms-2">Кабинет</span>
+          </a>
+        </div>
       </div>
     </div>
   </nav>
@@ -217,11 +228,49 @@
       <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
         <div>
           <h2 class="h4 mb-1" id="reviews-title">Отзывы</h2>
-          <p class="mb-0"><span class="rating-stars" role="img" aria-label="Оценка 5 из 5">★★★★★<span class="rating-stars__empty"></span></span> <span class="fw-semibold ms-1">5,0</span> <span class="text-body-secondary">по 3 отзывам</span></p>
+          <p class="mb-0" data-rating-for="doctor-z" data-base-sum="15" data-base-count="3" data-base-five="3"><span class="rating-stars" role="img" aria-label="Оценка 5 из 5">★★★★★<span class="rating-stars__empty"></span></span> <span class="fw-semibold ms-1" data-rating-avg>5,0</span> <span class="text-body-secondary" data-rating-count="dative">по 3 отзывам</span></p>
         </div>
-        <a class="btn btn-sm btn-outline-light" href="reviews.html">Все отзывы о квестах</a>
+        <div class="d-flex flex-wrap gap-2">
+          <button class="btn btn-sm btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#review-form-box" aria-expanded="false" aria-controls="review-form-box">Оставить отзыв</button>
+          <a class="btn btn-sm btn-outline-light" href="reviews.html">Все отзывы о квестах</a>
+        </div>
       </div>
-      <div class="row g-4">
+      <div class="collapse" id="review-form-box">
+        <form class="card review-form mb-4" id="review-form" data-quest="doctor-z" novalidate>
+          <div class="card-body">
+            <h3 class="h6 mb-3">Ваш отзыв о квесте «Лаборатория доктора Z»</h3>
+            <div class="row g-3">
+              <div class="col-12 col-md-6">
+                <label class="form-label" for="review-name">Имя <span class="text-danger">*</span></label>
+                <input class="form-control" id="review-name" name="name" type="text" minlength="2" maxlength="40" autocomplete="given-name" required>
+                <div class="invalid-feedback">Введите имя, минимум 2 буквы.</div>
+              </div>
+              <div class="col-12 col-md-6">
+                <fieldset>
+                  <legend class="form-label fs-6">Оценка <span class="text-danger">*</span></legend>
+                  <div class="star-input">
+                    <input class="btn-check" type="radio" name="rating" id="rating-5" value="5" required><label class="star-input__star" for="rating-5" title="5 из 5"><span class="visually-hidden">5 из 5</span>★</label>
+                    <input class="btn-check" type="radio" name="rating" id="rating-4" value="4" required><label class="star-input__star" for="rating-4" title="4 из 5"><span class="visually-hidden">4 из 5</span>★</label>
+                    <input class="btn-check" type="radio" name="rating" id="rating-3" value="3" required><label class="star-input__star" for="rating-3" title="3 из 5"><span class="visually-hidden">3 из 5</span>★</label>
+                    <input class="btn-check" type="radio" name="rating" id="rating-2" value="2" required><label class="star-input__star" for="rating-2" title="2 из 5"><span class="visually-hidden">2 из 5</span>★</label>
+                    <input class="btn-check" type="radio" name="rating" id="rating-1" value="1" required><label class="star-input__star" for="rating-1" title="1 из 5"><span class="visually-hidden">1 из 5</span>★</label>
+                  </div>
+                </fieldset>
+              </div>
+              <div class="col-12">
+                <label class="form-label" for="review-text">Отзыв <span class="text-danger">*</span></label>
+                <textarea class="form-control" id="review-text" name="text" rows="3" minlength="20" maxlength="600" placeholder="Что понравилось, что запомнилось, кому посоветуете этот квест" required></textarea>
+                <div class="invalid-feedback">Напишите хотя бы пару предложений — от 20 символов.</div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer d-flex justify-content-end gap-2">
+            <button class="btn btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#review-form-box">Отмена</button>
+            <button class="btn btn-primary" type="submit">Опубликовать</button>
+          </div>
+        </form>
+      </div>
+      <div class="row g-4" id="review-list" data-review-list="doctor-z">
           <div class="col-12 col-md-6 col-lg-4">
             <article class="card h-100 review-card">
               <div class="card-body d-flex flex-column">
@@ -375,8 +424,8 @@
             <li class="d-flex align-items-center gap-2"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><a class="link-secondary" href="tel:+79167352148">+7 (916) 735-21-48</a></li>
             <li class="d-flex gap-2 mt-1"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg><span class="text-body-secondary">ул. Таганская, 24, вход со двора</span></li>
             <li class="d-flex align-items-center gap-2"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><a class="link-secondary" href="tel:+79253186409">+7 (925) 318-64-09</a></li>
-            <li class="d-flex align-items-center gap-2 mt-1"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><a class="link-secondary" href="mailto:hello@quest-lab.ru">hello@quest-lab.ru</a></li>
-            <li class="d-flex align-items-center gap-2 text-body-secondary"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Ежедневно 10:00–23:30</span></li>
+            <li class="d-flex align-items-center gap-2 mt-1 text-body-secondary"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Ежедневно 10:00–23:30</span></li>
+            <li class="d-flex align-items-center gap-2"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><a class="link-secondary" href="mailto:hello@quest-lab.ru">hello@quest-lab.ru</a></li>
           </ul>
         </div>
       </div>
@@ -530,16 +579,67 @@
     </div>
   </div>
 
-  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div class="toast-container position-fixed top-0 end-0 p-3 mt-5">
     <div class="toast align-items-center border-0 text-bg-success" id="booking-toast" role="status" aria-live="polite" aria-atomic="true">
       <div class="d-flex">
-        <div class="toast-body">Заявка отправлена. Администратор перезвонит в течение 15 минут.</div>
+        <div class="toast-body" id="booking-toast-text">Заявка отправлена. Администратор перезвонит в течение 15 минут.</div>
         <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Закрыть"></button>
       </div>
     </div>
   </div>
 
+  <div class="modal fade" id="search-modal" tabindex="-1" aria-labelledby="search-title" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title h5" id="search-title">Поиск квеста</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body">
+          <label class="visually-hidden" for="search-input">Название, жанр или сюжет квеста</label>
+          <div class="input-group input-group-lg">
+            <span class="input-group-text"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span>
+            <input class="form-control" type="search" id="search-input" placeholder="Например: хоррор, дети, лаборатория" autocomplete="off">
+          </div>
+          <p class="small text-body-secondary mt-2 mb-3" id="search-status" aria-live="polite">Ищите по названию, жанру, сюжету или особенностям: «актёр», «дети», «8 человек».</p>
+          <div class="list-group" id="search-results"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chat-widget">
+    <section class="card chat-widget__panel" id="chat-panel" aria-label="Чат с консультантом" hidden>
+      <div class="card-header d-flex align-items-center gap-2">
+        <span class="review-card__avatar review-card__avatar--1 chat-widget__avatar" aria-hidden="true">А</span>
+        <div>
+          <p class="fw-semibold mb-0">Анна, консультант</p>
+          <p class="small mb-0 chat-widget__status">онлайн, отвечает за минуту</p>
+        </div>
+        <button type="button" class="btn-close ms-auto" id="chat-close" aria-label="Закрыть чат"></button>
+      </div>
+      <div class="card-body chat-widget__messages" id="chat-messages" aria-live="polite"></div>
+      <div class="chat-widget__quick px-3 pb-2 d-flex flex-wrap gap-1" id="chat-quick">
+        <button type="button" class="btn btn-sm btn-outline-secondary">Как выбрать квест?</button>
+        <button type="button" class="btn btn-sm btn-outline-secondary">Сколько стоит?</button>
+        <button type="button" class="btn btn-sm btn-outline-secondary">Можно с детьми?</button>
+        <button type="button" class="btn btn-sm btn-outline-secondary">Где вы находитесь?</button>
+      </div>
+      <form class="card-footer d-flex gap-2" id="chat-form">
+        <label class="visually-hidden" for="chat-input">Сообщение консультанту</label>
+        <input class="form-control form-control-sm" id="chat-input" type="text" placeholder="Напишите вопрос…" autocomplete="off" required>
+        <button class="btn btn-primary btn-sm" type="submit">Отправить</button>
+      </form>
+    </section>
+    <button class="btn btn-primary chat-widget__toggle" type="button" id="chat-toggle" aria-controls="chat-panel" aria-expanded="false" aria-label="Открыть чат с консультантом">
+      <svg class="icon icon--lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg>
+    </button>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/quests-data.js"></script>
+  <script src="js/site.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/review-form.js"></script>
 </body>
 </html>

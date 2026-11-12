@@ -6,7 +6,8 @@
 // 4) прокручивает ленту категорий на главной кнопками « и »;
 // 5) показывает поле «Режим игры» только для хоррор-квестов;
 // 6) оставляет в списке «Игроков» только допустимое для квеста количество;
-// 7) считает стоимость брони: сеанс + доплата за игроков + дополнительные услуги.
+// 7) считает стоимость брони: сеанс + доплата за игроков + дополнительные услуги;
+// 8) сохраняет бронь для личного кабинета и подставляет имя и телефон вошедшего пользователя.
 // ==========================================================
 
 const bookingModal = document.getElementById('booking-modal');
@@ -55,6 +56,7 @@ document.querySelectorAll('.needs-validation').forEach((form) => {
     }
 
     form.classList.remove('was-validated');
+    saveBooking(form);
     form.reset();
 
     // Если форма в модальном окне — закрываем окно.
@@ -229,3 +231,40 @@ if (bookingForm && bookingLines) {
   bookingModal.addEventListener('shown.bs.modal', updateBookingPrice);
   updateBookingPrice();
 }
+
+// 8. Связь с личным кабинетом (данные хранятся в localStorage браузера).
+function saveBooking(form) {
+  const data = new FormData(form);
+  let when = '';
+  if (form.id === 'booking-form') when = `${data.get('day')}, ${data.get('time')}`;
+  else if (data.get('date')) when = new Date(data.get('date')).toLocaleDateString('ru-RU');
+
+  const modeNames = { soft: 'лайт', light: 'медиум', hard: 'хард' };
+  const booking = {
+    id: Date.now(),
+    quest: data.get('quest') === 'any' ? 'Нужна консультация' : data.get('quest'),
+    when,
+    players: data.get('players'),
+    mode: modeNames[data.get('mode')] || '',
+    total: form.id === 'booking-form' ? document.getElementById('booking-total').textContent : '',
+  };
+
+  try {
+    const bookings = JSON.parse(localStorage.getItem('ql-bookings')) || [];
+    bookings.push(booking);
+    localStorage.setItem('ql-bookings', JSON.stringify(bookings));
+  } catch { /* хранилище недоступно — бронь просто не попадёт в кабинет */ }
+}
+
+// Если пользователь вошёл в кабинет — заполняем имя и телефон в формах.
+try {
+  const user = JSON.parse(localStorage.getItem('ql-user'));
+  if (user) {
+    ['booking', 'order'].forEach((prefix) => {
+      const name = document.getElementById(`${prefix}-name`);
+      const phone = document.getElementById(`${prefix}-phone`);
+      if (name && !name.value) name.value = user.name;
+      if (phone && !phone.value) phone.value = user.phone;
+    });
+  }
+} catch { /* нет данных — ничего не делаем */ }
